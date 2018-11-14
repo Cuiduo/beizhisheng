@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>贝智生</title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+		<script src="../js/mobile.js"></script>
+		<style>
+			body{
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				-webkit-tap-highlight-color: transparent;
+				-webkit-appearance:none;
+			}
+			article {
+				width: 100%;
+				height: 92vh;
+				padding: 0 .3rem;
+			}
+			article .logoBox h3{
+				font-size: 0.15rem;
+				padding-top: 0.6rem;
+				color: #585858;
+				padding-bottom: 0.3rem;
+				font-weight: 800;
+			}
+			article ul li{
+				margin-bottom: 0.2rem;
+			}
+			.tips{
+				/*width: 1rem;
+				height: 1rem;*/
+				background: rgba(0,0,0,0.5);
+				position: fixed;
+				left: 50%;
+  				top: 70%;
+  				transform: translate(-50%, -50%);
+  				z-index: 1000;
+  				color: #FFFFFF;
+  				font-size: 0.18rem;
+  				padding: 0.1rem;
+  				border-radius: 3px;
+  				display: none;
+			}
+			.logoBox{
+				/*text-align: center;*/
+				padding: 0.2rem 0;
+				border-bottom: 1px dashed #BBD0FF;
+				margin-bottom: 0.2rem;
+			}
+			.logoBox p:nth-of-type(1){
+				margin-bottom: 0.2rem;
+			}
+			.logoBox p span img{
+				width: 0.5rem;
+				margin-right: 0.1rem;
+			}
+			.logoBox p span:nth-of-type(1){
+				width: 0.6rem;
+				font-size: 0.16rem;
+				padding-right: 0.1rem;
+				color: #636363;
+			}
+			.logoBox p span:nth-of-type(2){
+				margin-right: 0.2rem;
+				font-size: 0.16rem;
+			}
+			.logoBox p span:nth-of-type(3){
+				font-size: 0.16rem;
+			}
+			#phoneNum{
+				width: 100%;
+				height: 0.4rem;
+				background: #FFFFFF;
+				/*text-align: center;*/
+				padding-left: 0.1rem;
+				/*line-height: 0.4rem;*/
+				font-size: 0.16rem;
+				border-radius: 3px;	
+				outline: none;
+				border: 1px solid #BBD0FF;
+				-webkit-appearance:none;
+			}
+			.nextbt{
+				width: 100%;
+				height: 0.4rem;
+				background: #4D84FF;
+				text-align: center;
+				line-height: 0.4rem;
+				color: #FFFFFF;
+				font-size: 0.18rem;
+				border-radius: 3px;	
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			#codeNum{
+				width: 1.9rem;
+				margin-right: 0.1rem;
+				border: 1px solid #BBD0FF;
+				height: 0.4rem;
+				font-size: 0.16rem;
+				padding-left: 0.1rem;
+				-webkit-appearance:none;
+				border-radius: 3px;	
+			}
+			#babyName{
+				width: 2.37rem;
+				border: 1px solid #BBD0FF;
+				height: 0.4rem;
+				font-size: 0.16rem;
+				padding-left: 0.1rem;
+				border-radius: 3px;	
+				-webkit-appearance:none;
+			}
+			#sendCode{
+				width: 1.1rem;
+				border-radius: 3px;
+				height: 0.4rem;
+				color: #FFFFFF;
+				background: #4D84FF;
+				outline: none;
+				border: none;
+				font-size: 0.16rem;
+				vertical-align: bottom;
+				-webkit-appearance:none;
+			}
+			::-webkit-input-placeholder { /* WebKit browsers */
+			    color: #BBD0FF;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="tips"></div>
+		<article>
+			<div class="logoBox">
+				<h3>完善信息，查看测评报告</h3>
+				<p>
+					<span>宝宝性别</span>
+					<span>
+						<img class="babyHead" src="../img/boyschose.png"/>男孩
+					</span>
+					<span>
+						<img class="babyHeadg" src="../img/grils.png"/>女孩
+					</span>
+				</p>
+				<p>
+					<span>宝宝姓名</span>
+					<input type="text" name="" id="babyName" value="" placeholder="请输入"/>
+				</p>
+			</div>
+			<ul>
+				<li>
+					<input type="tel" name="" id="phoneNum" value="" placeholder="请输入手机号"/>
+				</li>
+				<li>
+					<input type="tel" name="" id="codeNum" value="" placeholder="请输入验证码"/>
+					<input type="button" value="获取验证码" id="sendCode" />
+				</li>
+			</ul>
+			<div class="nextbt">
+				查看测评报告
+			</div>
+		</article>
+		<script src="../js/jquery.min.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="../js/common.js"></script>
+		<script>
+			var openId = localStorage.openId,babyAge=localStorage.babyAge,babyId=localStorage.babyId;
+			//babyId=1;
+			var countdown=60; 
+			var isPhone = /^1[3|4|5|7|8|9][0-9]{9}$/;
+			var obj = $("#sendCode");
+			var phonetest = false;
+			$("#babyName").blur(function(){
+		        var username = /^[\u4E00-\u9FA5A-Za-z]+$/;
+//		        var username =/^[\u4e00-\u9fa5]{2,4}$/;
+				if ($(this).val().length>20) {
+					$('.tips').html('姓名不超过20个字符');
+		        	showpho();
+		        	$(this).focus();
+		        	return false;
+				} else{
+					if(!username.test($("#babyName").val())){
+			        	$(this).val("");
+			        	$('.tips').html('姓名填写有误');
+			        	showpho();
+			        	$(this).focus();
+			        	return false;
+			        }
+				}
+		        
+	        });
+			$('#sendCode').click(function(){
+				send();
+			})
+			function send(){
+			    if (!isPhone.test($("#phoneNum").val())) {
+			    	$('.tips').html('请输入正确的手机号');
+			    	showpho();
+			    	return;
+			    }
+			    phonetest = true;
+			    settime(obj);
+			    $.ajax({
+					type:"get",
+					url:url+"weChat/sendVerificationCode/"+$("#phoneNum").val(),
+					async:true,
+					success:function(data){
+						if (data.data.sendResult=='同一手机号验证码短信发送超出5条') {
+							$('.tips').html('同一手机号验证码短信发送超出5条');
+			    			showpho();
+						}
+					}
+				});
+			}
+			function settime(obj) { //发送验证码倒计时
+			    if (countdown == 0) { 
+			        obj.attr('disabled',false);  
+			        obj.val("获取验证码");
+			        $("#sendCode").css("background","#4D84FF")
+			        countdown = 60; 
+			        return;
+			    } else { 
+			        obj.attr('disabled',true);
+			        obj.val(countdown + "秒");
+			        countdown--; 
+			        $("#sendCode").css("background","#C3C3C3")
+			    } 
+				setTimeout(function() { 
+			    	settime(obj)
+			   },1000) 
+			}
+			
+			//选择男孩女孩
+			var babyGender = 1;
+			$('.babyHead').click(function(){
+				$(this).attr('src','../img/boyschose.png');
+				$('.babyHeadg').attr('src','../img/grils.png');
+				babyGender = 1;
+			})
+			$('.babyHeadg').click(function(){
+				babyGender = 0;
+				$(this).attr('src','../img/grillschose.png');
+				$('.babyHead').attr('src','../img/boys.png');
+			})
+			
+			//检测报告
+			$('.nextbt').click(function(){
+				if (phonetest&&$('#codeNum').val()!='') {
+					$.ajax({
+						type:"post",
+						url:url+"weChat/updateBaby",
+						async:true,
+						contentType: "application/json",
+						data:JSON.stringify({
+							"babyGender": babyGender,
+							"babyName": $("#babyName").val(),
+							"mobile": $("#phoneNum").val(),
+							"verificationCode": $('#codeNum').val(),
+							"babyId": babyId,
+							"openId": openId
+						}),
+						success:function(data){
+							console.log(data);
+							if (data.data.updateFlag) {
+								$.ajax({
+									type:"get",
+									url:url+"weChat/getCorrelation/"+openId,
+									async:true,
+									success:function(data){
+										localStorage.index=data.data.latestReportId;
+										if (data.data.latestReportId==0) {
+											window.location.href='abnormal.html';
+										} else{
+											window.location.href='appraisalResult.html';
+										}
+									}
+								})
+							} else if(data.status==500){
+								$('.tips').html('服务器出错！');
+			    				showpho();
+							}else{
+								$('.tips').html('未知错误！');
+			    				showpho();
+							}
+						}
+					});
+				}else if(phonetest){
+					$('.tips').html('请输入正确的验证码')
+			    	showpho();
+				}else{
+					$('.tips').html('请先获取验证码')
+			    	showpho();
+				}
+			});
+			//显示函数
+			function showpho(){
+			    $(".tips").show();
+			    setTimeout(hidpho,1000);
+			}
+			//隐藏函数
+			function hidpho(){
+			    $(".tips").hide();
+			}
+			//去测试结果
+//			$('.nextbt').click(function(){
+//				window.location.href='appraisalResult.html';
+//			})
+		</script>
+	</body>
+</html>

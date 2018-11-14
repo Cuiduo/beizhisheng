@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>贝智生</title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+		<script src="../js/mobile.js"></script>
+		<style>
+			body{
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				-webkit-tap-highlight-color: transparent;
+			}
+			article {
+				width: 100%;
+				min-height: 5rem;
+				/*background: pink;*/
+				/*font-size: 0.24rem;*/
+				/*color: #FFFFFF;*/
+				padding: 0 0.3rem;
+			}
+			article h3{
+				font-size: 0.18rem;
+				padding-top: 0.5rem;
+				color: #636363;
+				padding-bottom: 0.2rem;
+				font-weight: 800;
+				text-align: center;
+			}
+			article h4{
+				font-size: 0.16rem;
+				padding-top: 0.2rem;
+				color: #636363;
+				padding-bottom: 0.2rem;
+				text-align: center;
+				
+			}
+			.tips{
+				/*width: 1rem;
+				height: 1rem;*/
+				background: rgba(0,0,0,0.5);
+				position: fixed;
+				left: 50%;
+  				top: 10%;
+  				transform: translate(-50%, -50%);
+  				z-index: 1000;
+  				color: #FFFFFF;
+  				font-size: 0.18rem;
+  				padding: 0.1rem;
+  				border-radius: 3px;
+  				display: none;
+			}
+			#choseDate{
+				width: 100%;
+				height: 0.4rem;
+				background: #C3C3C3;
+				text-align: center;
+				line-height: 0.4rem;
+				color: #FFFFFF;
+				font-size: 0.18rem;
+				border-radius: 3px;
+				outline: none;
+				border: 1px solid #BBD0FF;	
+				background: #FFFFFF;
+				color: #4D84FF;
+				opacity: 0.7;
+				margin-bottom: 0.2rem;
+				background: none;
+			}
+			.nextbt{
+				width: 100%;
+				height: 0.42rem;
+				background: #C3C3C3;
+				text-align: center;
+				line-height: 0.42rem;
+				color: #FFFFFF;
+				font-size: 0.2rem;
+				border-radius: 3px;	
+				
+			}
+			footer{
+				width: 100%;
+				text-align: center;
+				font-size: 0.12rem;
+				color: #B0B0B0;
+			}
+			footer p{
+				padding-bottom: 0.05rem;
+			}
+			.tooth,.date_grid div{
+				font-weight: 500;
+			}
+			.identityBox{
+				width: 100%;
+				display: flex;
+			}
+			.identityBox dl{
+				flex: 1;
+				justify-content:center;
+				align-content: center;
+				width: 0.5rem;
+				/*height: 0.5rem;*/
+				text-align: center;
+				padding-bottom: 0.5rem;
+			}
+			.identityBox dl dt{
+				padding-bottom: 0.1rem;
+			}
+			.identityBox dl img{
+				width: 0.6rem;
+			}
+			.chosed{
+				background: #37CD81;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="tips">请选择一个选项</div>
+		<article>
+			<h3>宝宝年龄</h3>
+			<h4>请选择宝宝的出生日期</h4>
+	        <input id="choseDate" type="button" readonly="" value="点击选择日期" data-lcalendar="2016-05-11,2016-05-11" />
+	        <h4>您是宝宝的</h4>
+	        <div class="identityBox">
+	        	<dl>
+	        		<dt>爸爸</dt>
+	        		<dd>
+	        			<img class="dadyclass" src="../img/dadyNo.png"/>
+	        		</dd>
+	        	</dl>
+	        	<dl>
+	        		<dt>妈妈</dt>
+	        		<dd>
+	        			<img class="mamaclass" src="../img/mamaNo.png"/>
+	        		</dd>
+	        	</dl>
+	        </div>
+			<div class="nextbt">
+				请完善资料
+			</div>
+		</article>
+		<footer>
+			<p>本测评的适用范围为0-3岁</p>
+			<p>更多测评即将上线，敬请期待！</p>
+		</footer>
+		<script src="../js/jquery.min.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="../js/datePicker.js"></script>
+		<script src="../js/common.js"></script>
+		<script>
+			//share()
+			var openId = localStorage.openId;
+			var date = new Date();
+            var dateArr = {
+                yy: date.getFullYear(),
+                mm: date.getMonth()+1,
+                dd: date.getDate()
+            };
+			var calendar = new datePicker();
+			var flage = false;
+			var hack = false;
+			var relation = '';
+			calendar.init({
+				'trigger': '#choseDate',
+				'type': 'date',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+				'minDate':'2010-1-1',
+				'maxDate':dateArr.yy+'-'+dateArr.mm+'-'+dateArr.dd,/*最大日期*/
+				'onSubmit':function(){
+					var theSelectData=calendar.value;
+					if ($('#choseDate').val()=='点击选择日期') {
+						$('#choseDate').css('opacity','0.7');
+					}else{
+						$('#choseDate').css('opacity','1');
+						flage = true;
+						if (hack) {
+							$('.nextbt').addClass('chosed').html('进入测评');
+						}
+					}
+				},
+				'onClose':function(){}
+			});
+			
+			$('.dadyclass').click(function(){
+				hack=true;
+				$('.mamaclass').attr('src','../img/mamaNo.png');
+				relation = '0';
+				$(this).attr('src','../img/dadyChoesed.png');
+				if (flage) {
+					$('.nextbt').addClass('chosed').html('进入测评');
+				}
+			});
+			$('.mamaclass').click(function(){
+				hack=true;
+				$(this).attr('src','../img/mamaChoesed.png');
+				relation = '1';
+				$('.dadyclass').attr('src','../img/dadyNo.png');
+				if (flage) {
+					$('.nextbt').addClass('chosed').html('进入测评');
+				}				
+			});
+			$('.nextbt').click(function(){
+				if (hack&&flage) {
+					$.ajax({
+						type:"post",
+						url:url+"weChat/insertBaby",
+						async:true,
+						contentType: "application/json",
+						data:JSON.stringify({
+							birthday:$('#choseDate').val(),
+							relation:relation,
+							openId:openId
+						}),
+						success:function(data){
+//							console.log(data);
+							localStorage.babyAge=data.data.monthAge;
+							localStorage.babyId=data.data.babyId;
+							$.ajax({
+								type:"get",
+								url:url+"weChat/questionBank/"+openId+'/'+localStorage.babyAge,
+								async:true,
+								success:function(data){
+//									console.log(data);
+									if(data.status==-1){
+										window.location.href='judge.html?babyAge='+localStorage.babyAge+'&firstFlag=0';
+									}else{
+										window.location.href='question.html';
+									}
+								}
+							});
+						}
+					});
+				} else{
+					
+				}
+				
+				//window.location.href='question.html';
+			})
+		</script>
+	</body>
+</html>

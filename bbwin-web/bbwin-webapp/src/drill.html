@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>贝智生</title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+		<script src="../js/mobile.js"></script>
+		<style>
+			body {
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				-webkit-tap-highlight-color: transparent;
+				/*background: #BCD6FF;*/
+				background:-webkit-gradient(linear, 0 0, 0 bottom, from(#CDE0FF), to(#BCD6FF));  
+			}
+			
+			article {
+				width: 100%;
+				min-height: 5rem;
+				/*font-size: 0.24rem;*/
+				/*color: #FFFFFF;*/
+				/*padding: 0 0.3rem;*/
+			}
+			
+			article .topBox{
+				width: 100%;
+				height: 1.62rem;
+				background: url(../img/bj3.png) no-repeat;
+				background-size: contain;
+			}
+			article .topBox h2{
+				color: #317AED;
+				font-size: 0.28rem;
+				font-weight: 800;
+				padding-left: 0.3rem;
+				padding-top: 0.5rem;
+			}
+			article .topBox h3{
+				font-size: 0.42rem;
+				font-weight: 800;
+				padding-left: 0.6rem;
+				color: #105CD2;
+			}
+			.containBox{
+				min-height: 3rem;
+				width: 90%;
+				margin: 0 auto;
+				border-radius: 0.1rem;
+				background: #FFFFFF;
+				margin-bottom: 0.3rem;
+			}
+			.containBox h4{
+				text-align: center;
+				padding-top: 0.28rem;
+			}
+			.containBox h4 img{
+				width: 1rem;
+			}
+			.containBox h5{
+				color: #7E7E7E;
+				font-size: 0.16rem;
+				text-align: center;
+				padding: 0.2rem 0;
+				padding: 0.2rem;
+			}
+			.containBox h6{
+				text-align: center;
+				color: #5EA4DC;
+				font-weight: 800;
+				font-size: 0.18rem;
+			}
+			.containBox h6 span{
+				width: 5px;
+				height: 5px;
+				border-radius: 50%;
+				background: #5EA4DC;
+				display: inline-block;
+				margin: 0 0.06rem;
+				vertical-align: middle;
+			}
+			.containBox .titles{
+				padding-top: 0.05rem;
+			}
+			.containBox div{
+				padding: 0.2rem 0;
+			}
+			.containBox p{
+				padding: 0 0.24rem;
+				color: #7E7E7E;
+				letter-spacing: 2px;
+				font-size: 0.16rem;
+				text-indent: 2em;
+			}
+			.imgBox{
+				text-align: center;
+			}
+			.imgBox img{
+				width: 2.8rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<article>
+			<div class="topBox">
+				<h2>训练方案</h2>
+				<h3></h3>
+			</div>
+			<!--<div class="containBox">
+				<h4><img src="../img/tm1.png"/></h4>
+				<h5>拉腕坐起</h5>
+				<h6><span></span>目的<span></span></h6>
+				<h5 class="titles">训练宝宝颈肌、背肌的力量。</h5>
+				<h6><span></span>方法<span></span></h6>
+				<div>
+					<p>1.小儿在空腹时，放在床上俯卧，逐渐延长俯卧时间（2~3秒），用玩具逗引鼓励和培养俯卧抬头。</p>
+					<p>2.成人一手抱小儿，一手撑住他的后部及背部，使头部处于直立状态，边走边变换方向，让婴儿观察四周，促使他自己将头竖直。</p>
+					<p>3.当小儿用双臂支撑前身，抬头时，家长将玩具举在小儿的头前，左右摇动，使他向前、左、右三个方面看，将肘部支撑，使头抬得更高些，锻炼颈椎和胸背肌肉。</p>
+				</div>
+				<div class="imgBox">
+					<img src="../img/tu.png"/>
+				</div>
+			</div>-->
+			
+		</article>
+		<script src="../js/jquery.min.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="../js/common.js"></script>
+		<script>
+			var test = getQueryString('test');
+			
+			if (test!==null) {
+				pushHistory();
+				window.addEventListener("popstate", function(e) {
+					window.location.href='../index.html?index=3'
+				}, false);
+			}
+			
+			function pushHistory() {
+				var state = {
+					title: "title",
+					url: "#"
+				};
+				window.history.pushState(state, "title", "#");
+			}
+			var capacityType = getQueryString("capacityType"),currentGrowthMonth = getQueryString("currentGrowthMonth");
+			var token = localStorage.openId;
+			if (capacityType==1) {
+				$('.topBox h3').html('大运动')
+			} else if(capacityType==2){
+				$('.topBox h3').html('精细运动')
+			} else if(capacityType==3){
+				$('.topBox h3').html('适应能力')
+			} else if(capacityType==4){
+				$('.topBox h3').html('语言')
+			} else if(capacityType==5){
+				$('.topBox h3').html('社交行为')
+			}
+			$.ajax({
+				type:"get",
+				url:url+"weChat/report/guidance/"+capacityType+'/'+currentGrowthMonth,
+				async:true,
+				success:function(data){
+//					console.log(data);
+					var str = '';
+					for (var i=0;i<data.data.length;i++) {
+//						console.log(data.data[i].projectMethod.split('↵'))
+						str+='<div class="containBox">'+
+								'<h4><img src="../img/tm'+(i+1)+'.png"/></h4>'+
+								'<h5>'+data.data[i].projectName+'</h5>'+
+								'<h6><span></span>目的<span></span></h6>'+
+								'<h5 class="titles">'+data.data[i].programGoal+'</h5>'+
+								'<h6><span></span>方法<span></span></h6>'+
+								'<div>'+
+									'<p>'+data.data[i].projectMethod+'</p>'+
+								'</div>'+
+//								'<div class="imgBox">'+
+//									'<img src="../img/tu.png"/>'+
+//								'</div>'+
+							'</div>'
+					}
+					$('.topBox').append(str);
+				}
+			});
+			
+			
+			$('.goPath a').click(function(){
+				location.href='fillInformation.html';
+			})
+			function getQueryString(name, str) { //获取url地址参数
+				str = str || decodeURIComponent(window.location.search);
+				var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+				var r = str.substr(1).match(reg);
+				if(r != null) {
+					return unescape(r[2]);
+				}
+				return null;
+			}
+		</script>
+	</body>
+
+</html>

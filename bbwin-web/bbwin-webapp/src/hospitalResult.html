@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>贝智生</title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../css/hospitalResult.css"/>
+		<script src="../js/mobile.js"></script>
+		<script src="https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts.min.js"></script>
+	</head>
+
+	<body>
+		<div class="tips"></div>
+		<div class="logoBox">
+			<img class="header" src="../img/TX M.png" />
+			<p>
+				<span><img class="icons" src="../img/name.png"/><i class="babyName"></i></span>
+				<span><img class="icons" src="../img/sex.png"/><i class="babyGenderName"></i></span>
+				<span><img class="icons" src="../img/date.png"/><i class="babyBirthday"></i></span>
+			</p>
+		</div>
+		<!--<article>
+			<div class="abnormal">
+				<div class="stateBox">
+					<img src="../img/warni.png" />
+				</div>
+				<p>您宝宝的测评结果超出本测评的正常范围，建议您及时到医院进一步检查，或重新测评。</p>
+			</div>
+		</article>-->
+		<div class="normal">
+			<h3></h3>
+			<h6></h6>
+			<p>
+				测评结果
+			</p>
+			
+			<table class="resultTable" border="" cellspacing="" cellpadding=""></table>
+		</div>
+		<div class="resultBox">
+			<h3>评定结果雷达图</h3>
+			<div id="main"></div>
+		</div>
+		<div class="specialistBox">
+			<h3>医生评价及建议</h3>
+			<p></p>
+		</div>
+		<div class="recommendBox">
+			<h3>医生推荐</h3>
+			<ul>
+				<li class="recommendOne">
+					<h6>小猫喵喵叫<span></span></h6>
+					<div>
+						<span><img class="stars" src="../img/tiem2x.png"/></span>
+						<span>2018-08-01</span>
+						<span><i><img src="../img/star2x.png"/></i>启智游戏<i><img src="../img/star2x.png"/></i></span>
+					</div>
+				</li>
+				<li class="recommendTwo">
+					<h6>小飞机<span></span></h6>
+					<div>
+						<span><img class="stars" src="../img/tiem2x.png"/></span>
+						<span>2018-08-01</span>
+						<span><i><img src="../img/star2x.png"/></i>启智游戏<i><img src="../img/star2x.png"/></i></span>
+					</div>
+				</li>
+				<li class="recommendThree">
+					<h6>伸手够物</h6>
+					<div>
+						<span><img class="stars" src="../img/tiem2x.png"/></span>
+						<span>2018-08-01</span>
+						<span><i><img src="../img/star2x.png"/></i>育儿课堂<i><img src="../img/star2x.png"/></i></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<footer>
+			<div class="codeBox">
+				<img src="../img/code.png"/>
+			</div>
+			<div class="attention">
+				<p>智慧妈妈的</p>
+				<p><img class="hearts" src="../img/momo.png"/>最佳选择<img class="hearts" src="../img/momo.png"/></p>
+			</div>
+		</footer>
+		<script src="../js/jquery.min.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/hospitalResult.js"></script>
+	</body>
+
+</html>

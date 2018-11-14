@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>贝智生</title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../css/appraisalResult.css"/>
+		<script src="../js/mobile.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	</head>
+	<body>
+		<div class="tips"></div>
+		<div class="logoBox">
+			<img class="header" src="../img/TX M.png" />
+			<p>
+				<span><img class="icons" src="../img/name.png"/><i class="babyName"></i></span>
+				<span><img class="icons" src="../img/sex.png"/><i class="babySex"></i></span>
+				<span><img class="icons" src="../img/date.png"/><i class="birthDay"></i></span>
+			</p>
+		</div>
+		<article>
+			<div class="abnormal">
+				<div class="stateBox">
+					<img src="../img/warni.png" />
+				</div>
+				<p>您宝宝的测评结果超出本测评的正常范围，建议您及时到医院进一步检查，或重新测评。</p>
+			</div>
+		</article>
+		<div class="normal">
+			<h3>健康发育测评报告</h3>
+			<h6></h6>
+			<p>
+				您的宝宝智龄达到X个月您的宝宝智龄达到X个月
+			</p>
+			<div id="main"></div>
+		</div>
+		<div class="resultBox">
+			<h3>测评结果及推荐训练</h3>
+			<ul></ul>
+		</div>
+		<script src="../js/jquery.min.js"></script>
+		<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+		<script src="../js/common.js"></script>
+		<script type="text/javascript" src="../js/appraisalResult.js?v=1.2.0" ></script>
+	</body>
+</html>

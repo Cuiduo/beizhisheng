@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>贝智生</title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+		<script src="../js/mobile.js"></script>
+		<style>
+			body{
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				-webkit-tap-highlight-color: transparent;
+			}
+			article {
+				width: 100%;
+				height: 92vh;
+				padding: 0 .3rem;
+				text-align: center;
+			}
+			article h3{
+				font-size: 0.18rem;
+				color: #585858;
+				padding-bottom: 0.1rem;
+				font-weight: 800;
+			}
+			article h4{
+				font-size: 0.18rem;
+				color: #838383;
+				padding-bottom: 0.4rem;
+			}
+			article p{
+				color: #B0B0B0;
+				font-size: 0.18rem;
+				padding-bottom: 0.05rem;
+			}
+			.tips{
+				/*width: 1rem;
+				height: 1rem;*/
+				background: rgba(0,0,0,0.5);
+				position: fixed;
+				left: 50%;
+  				top: 70%;
+  				transform: translate(-50%, -50%);
+  				z-index: 1000;
+  				color: #FFFFFF;
+  				font-size: 0.18rem;
+  				padding: 0.1rem;
+  				border-radius: 3px;
+  				display: none;
+			}
+			.logoBox{
+				text-align: center;
+				padding:1rem 0 0.3rem 0;
+			}
+			.logoBox img{
+				width: 1rem;
+			}
+			.stateBox{
+				display: flex;
+				margin-bottom: 0.6rem;
+				/*display: none;*/
+			}
+			.comst{
+				display: none;
+			}
+			.watch{
+				/*display: none;*/
+				background: #4D84FF;
+				color: #FFFFFF;
+				width: 1.48rem;
+				height: 0.4rem;
+				/*display: inline-block;*/
+				font-size: 0.18rem;
+				margin-right: 0.6rem;
+				/*text-align: center;*/
+				line-height: 0.4rem;
+				border-radius: 3px;
+				/*justify-content: flex-start;
+				align-content: flex-start;
+				align-items: center;*/
+				/*flex: 1;*/
+			}
+			.testAgian{
+				/*display: none;*/
+				color: #FFFFFF;
+				background: #00D75B;
+				width: 1.46rem;
+				height: 0.4rem;
+				/*display: inline-block;*/
+				font-size: 0.18rem;
+				text-align: center;
+				line-height: 0.4rem;
+				border-radius: 3px;
+				align-content: flex-end ;
+				/*flex: 1;*/
+			}
+			.nextbt{
+				display: none;
+				background: #37CD81;
+				width: 100%;
+				height: 0.4rem;
+				text-align: center;
+				line-height: 0.4rem;
+				color: #FFFFFF;
+				font-size: 0.18rem;
+				border-radius: 3px;	
+				margin-bottom: 0.6rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="tips"></div>
+		<article>
+			<div class="logoBox">
+				<img src="../img/boys.png"/>
+			</div>
+			<h3>您的宝宝</h3>
+			<h4>0个月</h4>
+			<div class="nextbt">进入测评</div>
+			<div class="comst">
+				<div class="stateBox">
+					<span class="watch">查看历史报告</span>
+					<span class="testAgian">重新测评</span>
+				</div>
+			</div>
+			
+			<p>本测评的适用范围为3-36个月</p>
+			<p>更多测评即将上线，敬请期待！</p>
+		</article>
+		<script src="../js/jquery.min.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="../js/common.js"></script>
+		<script>
+			var babyAge = getQueryString("babyAge");
+			var firstFlag = getQueryString("firstFlag");
+			var index = localStorage.index;
+			
+			console.log(babyAge+'...'+firstFlag+'////'+index)
+			$('h4').html(babyAge+'个月');
+			if(babyAge>0&&babyAge<3){
+				$('h4').html(babyAge+'个月');
+			}
+			if (babyAge<36&&firstFlag==1&&index!=-1) {
+				$('.comst').show();
+			} else if (babyAge<36&&firstFlag==0&&babyAge>=3) {
+				$('.nextbt').show()
+			}
+			
+			$('.testAgian').click(function(){
+				window.location.href='question.html?test=1';
+			});
+			$('.watch').click(function(){
+				console.log(index)
+				if (index==0) {
+					window.location.href='abnormal.html';
+				}else if(index!=-1){
+					window.location.href='appraisalResult.html';
+				}
+			})
+			$('.nextbt').click(function(){
+				window.location.href = 'question.html?test=1'
+			})
+		</script>
+	</body>
+</html>

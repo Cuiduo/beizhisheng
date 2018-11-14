@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<title>贝智生</title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+		<script src="../js/mobile.js"></script>
+		<style>
+			body{
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				-webkit-tap-highlight-color: transparent;
+			}
+			article {
+				width: 100%;
+				height: 92vh;
+				/*background: pink;*/
+				/*font-size: 0.24rem;*/
+				color: #FFFFFF;
+				padding: 0 .3rem;
+			}
+			article h3{
+				font-size: 0.18rem;
+				padding-top: 0.8rem;
+				color: #585858;
+				padding-bottom: 0.3rem;
+				font-weight: 800;
+			}
+			.bigUl .bigLi{
+				display: none;
+			}
+			article .questionUl{
+				margin-bottom: 0.5rem;
+			}
+			article .questionUl li{
+				height: 0.44rem;
+				width: 100%;
+				border: 1px solid #BBD0FF;
+				margin-bottom: 0.16rem;
+				color: #4D84FF;
+				line-height: 0.44rem;
+				text-align: center;		
+				border-radius: 3px;	
+				opacity: 0.7;	
+				font-size: 0.16rem;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				-webkit-tap-highlight-color: transparent;
+			}
+			.chosed{
+				box-shadow: #0096FF 0px 0px 10px 0;
+				opacity: 1;
+				font-weight: 800;
+			}
+			.nextbt{
+				width: 100%;
+				height: 0.44rem;
+				background: #CBCBCB;
+				text-align: center;
+				line-height: 0.44rem;
+				color: #FFFFFF;
+				font-size: 0.18rem;
+				border-radius: 3px;	
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			.nextbtChosed{
+				background: #4D84FF;
+				margin-top: 0.3rem;
+			}
+			.bigLi .nextbtLast{
+				background: #37CD81;
+			}
+			.tips{
+				/*width: 1rem;
+				height: 1rem;*/
+				background: rgba(0,0,0,0.5);
+				position: fixed;
+				left: 50%;
+  				top: 10%;
+  				transform: translate(-50%, -50%);
+  				z-index: 1000;
+  				color: #FFFFFF;
+  				font-size: 0.18rem;
+  				padding: 0.1rem;
+  				border-radius: 3px;
+  				display: none;
+			}
+			footer{
+				width: 100%;
+				text-align: center;
+				font-size: 0.12rem;
+				color: #B0B0B0;
+			}
+			#cover{
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.5);
+				position: fixed;
+				z-index: 1;
+				display: none;
+			}
+			.tipBox{
+				width: 80%;
+				height: 2.2rem;
+				background: #FFFFFF;
+				position: fixed;
+				left: 50%;
+				top: 50%;
+				margin-left: -40%;
+				margin-top: -1.1rem;
+				z-index: 10;
+				padding-top: 0.3rem;
+				display: none;
+				border-radius: 3px;
+			}
+			.tipBox p{
+				text-align: center;
+				font-size: 0.18rem;
+				color: #4A4A4A;
+				padding-bottom: 0.05rem;
+			}
+			.tipBox div{
+				padding-top: 0.2rem;
+			}
+			.tipBox div span{
+				border: 1px solid #4D84FF;
+				font-size: 0.18rem;
+				display: inline-block;
+				width: 1.1rem;
+				height: 0.5rem;
+				text-align: center;
+				line-height: 0.5rem;
+				border-radius: 3px;
+				color: #4D84FF;
+				margin-left: 0.26rem;
+			}
+			.tipBox div span:nth-of-type(2){
+				color: #FFFFFF;
+				background: #4D84FF;
+			}
+			.lastquestion{
+				background: #37CD81;
+			}
+			.tipBox img{
+				width: 0.5rem;
+				position: absolute;
+				right: -20px;
+				top: -20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="cover"></div>
+		<div class="tipBox">
+			<span><img src="../img/Group 3.png"/></span>
+			<p>测评尚未完成，</p>
+			<p>退出则无法按测评结果为您推荐</p>
+			<p>更适合宝宝的训练游戏</p>
+			<div>
+				<span>确定</span>
+				<span>取消</span>
+			</div>
+		</div>
+		<div class="tips">请选择一个选项</div>
+		<article>
+			<ul class="bigUl">
+				<!--<li class="bigLi">
+					<h3>1.抬肩坐起头竖直片刻：</h3>
+					<ul class="questionUl">
+						<li>能</li>
+						<li>不能</li>
+						<li>偶尔能</li>
+					</ul>
+					<div class="nextbt">
+						下一题
+					</div>
+				</li>-->
+				
+			</ul>
+		</article>
+		<footer>
+			测评日期  <span></span>
+		</footer>
+		<script src="../js/jquery.min.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/question.js?version=1.1.2"></script>
+	</body>
+</html>

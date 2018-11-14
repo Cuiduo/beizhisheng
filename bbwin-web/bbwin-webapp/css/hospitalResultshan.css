@@ -1,0 +1,309 @@
+body {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	padding-bottom: constant(safe-area-inset-bottom);
+	padding-bottom: env(safe-area-inset-bottom);
+	/*background: #F5F5F5;*/
+}
+
+article {
+	width: 100%;
+	height: 34vh;
+	padding: 0 .3rem;
+	/*text-align: center;*/
+}
+
+article h4 {
+	font-size: 0.18rem;
+	color: #838383;
+	padding-bottom: 0.4rem;
+}
+
+article p {
+	color: #636363;
+	font-size: 0.18rem;
+	padding-bottom: 0.05rem;
+	text-indent: 2em;
+	line-height: 0.28rem;
+}
+
+.tips {
+	/*width: 1rem;
+				height: 1rem;*/
+	background: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	left: 50%;
+	top: 70%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+	color: #FFFFFF;
+	font-size: 0.18rem;
+	padding: 0.1rem;
+	border-radius: 3px;
+	display: none;
+}
+
+.logoBox {
+	text-align: center;
+	/*padding:0.46rem 0 0.3rem 0;*/
+	height: 2.42rem;
+	background: url(../img/headbg.png) no-repeat;
+	background-size: contain;
+}
+
+.logoBox i {
+	font-style: normal;
+	color: #FFFFFF;
+	font-size: 0.13rem;
+	vertical-align: bottom;
+}
+
+.logoBox .header {
+	width: 1rem;
+	padding-top: 0.36rem;
+}
+
+.logoBox p {
+	padding-top: 0.2rem;
+}
+
+.logoBox p span {
+	padding: 0 0.1rem;
+}
+
+.stateBox {
+	margin-bottom: 0.4rem;
+	text-align: center;
+}
+
+.stateBox img {
+	width: 1rem;
+}
+
+.icons {
+	width: 0.18rem;
+	margin-right: 0.1rem;
+	vertical-align: text-bottom;
+}
+
+article {
+	display: none;
+}
+
+.resultBox {
+	width: 100%;
+	height: 4.9rem;
+	margin-top: -0.4rem;
+	padding-top: 0.3rem;
+	background-image: url(../img/BJ6.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#main {
+	width: 100%;
+	height: 2.4rem;
+	padding-top: 0.2rem;
+}
+
+.normal {
+	margin-bottom: 0.3rem;
+	width: 100%;
+	overflow: scroll;
+}
+
+.normal h3 {
+	font-size: 0.18rem;
+	color: #636363;
+	text-align: center;
+	margin: 0.2rem 0 0.1rem 0;
+	font-weight: 800;
+}
+
+.resultBox h6 {
+	font-size: 0.15rem;
+	color: #636363;
+	text-align: center;
+	margin: 0.1rem 0 0.1rem 0;
+}
+
+.resultBox h4 {
+	font-size: 0.18rem;
+	color: #636363;
+	text-align: center;
+	margin: 0 0 0.1rem 0;
+	font-weight: 800;
+}
+
+.normal p {
+	width: 88%;
+	margin: 0 auto;
+	line-height: 0.23rem;
+	color: #636363;
+	font-size: 0.15rem;
+	margin-bottom: 0.2rem;
+	text-align: center;
+}
+
+.resultBox h3 {
+	font-size: 0.18rem;
+	color: #636363;
+	text-align: center;
+	padding: 0.3rem 0 0.1rem 0;
+	font-weight: 800;
+}
+
+.specialistBox {
+	min-height: 1rem;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.specialistBox h3 {
+	font-size: 0.18rem;
+	color: #636363;
+	text-align: center;
+	margin: 0.1rem 0;
+	font-weight: 800;
+}
+
+.specialistBox p {
+	color: #848282;
+	line-height: 0.23rem;
+	font-size: 0.15rem;
+	text-indent: 2em;
+	margin-bottom: 0.5rem;
+	width: 100%;
+	text-align: center;
+}
+
+.recommendBox {
+	min-height: 1rem;
+	width: 88%;
+	margin: 0 auto;
+	padding-bottom: 0.2rem;
+}
+
+.recommendBox h3 {
+	font-size: 0.18rem;
+	color: #636363;
+	text-align: center;
+	margin: 0.2rem 0 0.1rem 0;
+	font-weight: 800;
+}
+
+.recommendBox ul li {
+	width: 100%;
+	height: 0.9rem;
+	background: #709DFF;
+	background-size: contain;
+	border-radius: 5px;
+	margin-bottom: 0.2rem;
+}
+
+.recommendBox ul li h6 {
+	margin: 0 0.1rem;
+	padding: 0.1rem 0;
+	border-bottom: 1px solid rgba(69, 110, 198, 0.2);
+	color: #FFFFFF;
+	font-size: 0.16rem;
+	font-weight: 800;
+}
+
+.recommendBox ul li h6 span {
+	color: #DCE7FF;
+	font-size: 0.14rem;
+}
+
+.recommendBox ul li div {
+	padding: 0.1rem;
+	color: #FFFFFF;
+}
+
+.recommendBox ul li div i img {
+	width: 0.1rem;
+	margin: 0 0.05rem;
+	vertical-align: baseline;
+}
+
+.recommendBox ul li div span:nth-of-type(3) {
+	font-size: 0.16rem;
+	color: #7FFFFF;
+	float: right;
+}
+
+footer {
+	height: 3.6rem;
+	background: url(../img/bj.png) no-repeat;
+	background-size: cover;
+	width: 100%;
+	position: relative;
+	left: 0;
+	bottom: 0;
+}
+
+.attention {
+	position: absolute;
+	bottom: 0.3rem;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.attention .hearts {
+	width: 0.12rem;
+	/*padding: 0 0.5rem;*/
+	margin: 0 0.05rem;
+}
+
+.attention p {
+	font-size: 0.15rem;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.footerTop {
+	text-align: center;
+	padding-top: 0.4rem;
+}
+
+.footerTop h3 {
+	color: #636363;
+	font-size: 0.18rem;
+	font-weight: 800;
+	padding: 0.1rem 0 0 0;
+}
+
+.footerTop p a {
+	color: #5187FF;
+	text-decoration: underline;
+	font-size: 0.18rem;
+}
+
+.codeBox {
+	position: absolute;
+	left: 49.8%;
+	bottom: 0.95rem;
+	transform: translateX(-50%);
+}
+
+.codeBox img {
+	width: 0.88rem;
+}
+
+.babyName {
+	display: inline-block;
+	max-width: 0.7rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	vertical-align: bottom;
+}
+
+.stars {
+	width: 0.15rem;
+	margin-right: 0.05rem;
+	vertical-align: bottom;
+}
